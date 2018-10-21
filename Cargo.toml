@@ -4,6 +4,12 @@ version = "0.1.0"
 authors = ["Joel Frank <joel.frank@rub.de>"]
 edition = "2018"
 
+description = "This crate provides a simple function for parsing hex-encoded strings as a vec."
+repository = "https://github.com/Joool/hexdecode"
+
+keywords = ["hex", "encoded", "parsing"]
+license-file = "LICENSE"
+
 [dev-dependencies]
 quickcheck = "0.7.1"
 quickcheck_macros = "0.7.0"
