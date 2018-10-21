@@ -4,7 +4,7 @@
 use std::io;
 
 /// A function for decoding a hex encoded string to Vec<u8>, leading zero agnostic
-pub fn hexdecode(data: &[u8]) -> Result<Vec<u8>, io::Error> {
+pub fn decode(data: &[u8]) -> Result<Vec<u8>, io::Error> {
     if data.is_empty() {
         return Ok(vec![]);
     }
@@ -51,7 +51,7 @@ fn hex(byte: u8) -> Result<u8, io::Error> {
 #[cfg(test)]
 mod tests {
     extern crate quickcheck;
-    use super::hexdecode;
+    use super::decode;
     use quickcheck::TestResult;
 
     #[quickcheck]
@@ -67,17 +67,17 @@ mod tests {
         }
         if input.is_empty() {
             let empty: Vec<u8> = vec![];
-            return TestResult::from_bool(empty == hexdecode(encoded.as_bytes()).unwrap());
+            return TestResult::from_bool(empty == decode(encoded.as_bytes()).unwrap());
         }
         if zero_check {
-            return TestResult::from_bool(vec![0] == hexdecode(encoded.as_bytes()).unwrap());
+            return TestResult::from_bool(vec![0] == decode(encoded.as_bytes()).unwrap());
         }
         TestResult::from_bool(
             input
                 .into_iter()
                 .skip_while(|u| *u == 0)
                 .collect::<Vec<_>>()
-                == hexdecode(encoded.as_bytes()).unwrap(),
+                == decode(encoded.as_bytes()).unwrap(),
         )
     }
 
@@ -95,17 +95,17 @@ mod tests {
         }
         if input.is_empty() {
             let empty: Vec<u8> = vec![];
-            return TestResult::from_bool(empty == hexdecode(encoded.as_bytes()).unwrap());
+            return TestResult::from_bool(empty == decode(encoded.as_bytes()).unwrap());
         }
         if zero_check {
-            return TestResult::from_bool(vec![0] == hexdecode(encoded.as_bytes()).unwrap());
+            return TestResult::from_bool(vec![0] == decode(encoded.as_bytes()).unwrap());
         }
         TestResult::from_bool(
             input
                 .into_iter()
                 .skip_while(|u| *u == 0)
                 .collect::<Vec<_>>()
-                == hexdecode(encoded.as_bytes()).unwrap(),
+                == decode(encoded.as_bytes()).unwrap(),
         )
     }
 }
