@@ -1,0 +1,9 @@
+[package]
+name = "hexdecode"
+version = "0.1.0"
+authors = ["Joel Frank <joel.frank@rub.de>"]
+edition = "2018"
+
+[dev-dependencies]
+quickcheck = "0.7.1"
+quickcheck_macros = "0.7.0"
