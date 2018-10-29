@@ -4,7 +4,8 @@
 use std::io;
 
 /// A function for decoding a hex encoded string to Vec<u8>, leading zero agnostic
-pub fn decode(data: &[u8]) -> Result<Vec<u8>, io::Error> {
+pub fn decode<T: AsRef<[u8]>>(input: T) -> Result<Vec<u8>, io::Error> {
+    let data = input.as_ref();
     if data.is_empty() {
         return Ok(vec![]);
     }
