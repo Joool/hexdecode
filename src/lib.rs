@@ -55,6 +55,17 @@ mod tests {
     use super::decode;
     use quickcheck::TestResult;
 
+    #[test]
+    fn simple_case() {
+        let input = "0xc61bb3FA61A883Ed7723a2bF9D41D30B196fd999".to_lowercase();
+        let mut string = String::new();
+        string.push_str("0x");
+        for byte in decode(&input).unwrap() {
+            string.push_str(&format!("{:0>2x}", byte));
+        }
+        assert_eq!(input, string);
+    }
+
     #[quickcheck]
     fn decoding_is_identity(input: Vec<u8>) -> TestResult {
         let mut encoded = String::with_capacity(input.len());

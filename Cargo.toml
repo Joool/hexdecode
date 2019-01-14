@@ -1,6 +1,6 @@
 [package]
 name = "hexdecode"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Joel Frank <joel.frank@rub.de>"]
 edition = "2018"
 
